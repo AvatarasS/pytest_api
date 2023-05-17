@@ -18,14 +18,20 @@ pipenv pipenv install --system
 
 To run all tests, use this command:
 
-```pytest ```
+```commandline
+pytest
+```
 
 To run a specific test, use this command with the name of the test:
 
-```pytest -k <name of the test> ```
+```commandline
+pytest -k <name of the test>
+```
 
 ## Reporting
 
 The test report is generated automatically after each test run, overriding the previous report. To view the report, use this command:
 
-```allure serve reports ```
+```commandline
+allure serve reports
+```
