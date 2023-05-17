@@ -155,12 +155,12 @@ class TestBookstoreAPI:
         assert response.status_code == 200
         response_content = json.loads(response.content)
         for order in response_content:
-            assert type(order["id"]) is str
-            assert type(order["bookId"]) is int
-            assert order["customerName"] == customer_name
-            assert type(order["createdBy"]) is str
-            assert type(order["quantity"]) is int
-            assert type(order["timestamp"]) is int
+            assert type(order['id']) is str
+            assert type(order['bookId']) is int
+            assert order['customerName'] == customer_name
+            assert type(order['createdBy']) is str
+            assert type(order['quantity']) is int
+            assert type(order['timestamp']) is int
 
     def test_unauthorized_request_all_book_orders(self) -> None:
         response = requests.get(url=f"{BASE_URL}/orders")
@@ -171,19 +171,19 @@ class TestBookstoreAPI:
     def test_request_order_by_id(self) -> None:
         token = read_from_file(data_file, "access_token")
         customer_name = read_from_file(data_file, "customer_name")
-        order_id = read_from_file(data_file, "order_id")
+        order_id = read_from_file(data_file, "orderId")
         headers = {
             "Authorization": f"Bearer {token}"
         }
         response = requests.get(url=f"{BASE_URL}/orders/{order_id}", headers=headers)
-        assert response.status_code == 404
+        assert response.status_code == 200
         response_content = json.loads(response.content)
-        assert type(response_content["id"]) is str
-        assert type(response_content["bookId"]) is int
-        assert response_content["customerName"] == customer_name
-        assert type(response_content["createdBy"]) is str
-        assert type(response_content["quantity"]) is int
-        assert type(response_content["timestamp"]) is int
+        assert type(response_content['id']) is str
+        assert type(response_content['bookId']) is int
+        assert response_content['customerName'] == customer_name
+        assert type(response_content['createdBy']) is str
+        assert type(response_content['quantity']) is int
+        assert type(response_content['timestamp']) is int
 
     def test_unauthorized_request_order_by_id(self) -> None:
         order_id = read_from_file(data_file, "order_id")
@@ -206,7 +206,7 @@ class TestBookstoreAPI:
     def test_updating_existing_order(self) -> None:
         token = read_from_file(data_file, "access_token")
         new_customer_name = "new_customer_name"
-        order_id = read_from_file(data_file, "order_id")
+        order_id = read_from_file(data_file, "orderId")
         headers = {
             "Authorization": f"Bearer {token}"
         }
@@ -214,11 +214,11 @@ class TestBookstoreAPI:
             "customerName": new_customer_name
         }
         response = requests.patch(url=f"{BASE_URL}/orders/{order_id}", json=body, headers=headers)
-        assert response.status_code == 404
+        assert response.status_code == 204
         response = requests.get(url=f"{BASE_URL}/orders/{order_id}", headers=headers)
         response_content = json.loads(response.content)
         assert response.status_code == 200
-        assert response_content["customerName"] == new_customer_name
+        assert response_content['customerName'] == new_customer_name
 
     def test_updating_invalid_order(self) -> None:
         token = read_from_file(data_file, "access_token")
@@ -248,13 +248,13 @@ class TestBookstoreAPI:
 
     def test_delete_existing_header(self) -> None:
         token = read_from_file(data_file, "access_token")
-        order_id = read_from_file(data_file, "order_id")
+        order_id = read_from_file(data_file, "orderId")
         headers = {
             "Authorization": f"Bearer {token}"
         }
         response = requests.delete(url=f"{BASE_URL}/orders/{order_id}", headers=headers)
-        assert response.status_code == 404
+        assert response.status_code == 204
         response = requests.get(url=f"{BASE_URL}/orders/{order_id}", headers=headers)
         response_content = json.loads(response.content)
         assert response.status_code == 404
-        assert response_content["error"] == f"No order with {order_id}."
+        assert response_content["error"] == f"No order with id {order_id}."
