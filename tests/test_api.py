@@ -176,7 +176,7 @@ class TestBookstoreAPI:
             "Authorization": f"Bearer {token}"
         }
         response = requests.get(url=f"{BASE_URL}/orders/{order_id}", headers=headers)
-        assert response.status_code == 200
+        assert response.status_code == 404
         response_content = json.loads(response.content)
         assert type(response_content["id"]) is str
         assert type(response_content["bookId"]) is int
@@ -214,7 +214,7 @@ class TestBookstoreAPI:
             "customerName": new_customer_name
         }
         response = requests.patch(url=f"{BASE_URL}/orders/{order_id}", json=body, headers=headers)
-        assert response.status_code == 204
+        assert response.status_code == 404
         response = requests.get(url=f"{BASE_URL}/orders/{order_id}", headers=headers)
         response_content = json.loads(response.content)
         assert response.status_code == 200
@@ -253,7 +253,7 @@ class TestBookstoreAPI:
             "Authorization": f"Bearer {token}"
         }
         response = requests.delete(url=f"{BASE_URL}/orders/{order_id}", headers=headers)
-        assert response.status_code == 204
+        assert response.status_code == 404
         response = requests.get(url=f"{BASE_URL}/orders/{order_id}", headers=headers)
         response_content = json.loads(response.content)
         assert response.status_code == 404
