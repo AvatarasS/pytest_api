@@ -2,15 +2,15 @@
 
 This project is a basic pytest framework for testing API requests using <https://simple-books-api.glitch.me> as a testing sandbox. The framework shows how to test different HTTP methods and scenarios with API endpoints.
 
-The framework also uses Allure reporter to generate test reports that are stored and displayed via GitHub Pages.
+The framework also uses Allure reporter to generate test [reports](https://avatarass.github.io/pytest_api/) that are stored and displayed via GitHub Pages.
 
 ## Installation
 
 To install the required environment, run the following commands:
 
-- ```python -m pip install``` 
-- ```--upgrade pip pip install```
-- ```pipenv pipenv install --system ```
+* `python -m pip install
+* --upgrade pip pip install
+* pipenv pipenv install --system`
 
 ## Usage
 
