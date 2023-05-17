@@ -8,9 +8,9 @@ The framework also uses Allure reporter to generate test [reports](https://avata
 
 To install the required environment, run the following commands:
 
-* `python -m pip install
-* --upgrade pip pip install
-* pipenv pipenv install --system`
+`python -m pip install 
+--upgrade pip pip install 
+pipenv pipenv install --system`
 
 ## Usage
 
