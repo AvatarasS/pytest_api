@@ -2,7 +2,7 @@
 
 This project is a basic pytest framework for testing API requests using <https://simple-books-api.glitch.me> as a testing sandbox. The framework shows how to test different HTTP methods and scenarios with API endpoints.
 
-The framework also uses Allure reporter to generate test reports that are stored and displayed via GitHub Pages. Moreover, the framework sends Slack notifications when GitHub Actions runs.
+The framework also uses Allure reporter to generate test reports that are stored and displayed via GitHub Pages.
 
 ## Installation
 
