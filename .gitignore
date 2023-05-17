@@ -1,0 +1,5 @@
+/.env
+/reports/*
+/tests/reports/*
+/.idea/*
+/.pytest_cache
