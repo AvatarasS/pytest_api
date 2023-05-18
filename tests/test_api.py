@@ -1,6 +1,6 @@
 import json
 import os
-import allure
+
 
 import requests
 
@@ -89,7 +89,7 @@ class TestBookstoreAPI:
         response = requests.get(url=f"{BASE_URL}/books/{book_id}")
         assert response.status_code == 404
         response_content = json.loads(response.content)
-        assert  response_content['error'] == f"No book with id {book_id}"
+        assert response_content['error'] == f"No book with id {book_id}"
 
     def test_register_new_user(self) -> None:
         body = {
